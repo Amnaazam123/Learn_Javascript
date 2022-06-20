@@ -345,6 +345,46 @@ console.log(curriedMultiply(2)(3))      //6
 const func = curriedMultiply(2)        //[Function (anonymous)]
 console.log(func(3))                   //6
 ```
+# Lexical scope
+Nest child functions have access to their parent functions. If we have child function with in parent function, the child function has access to the scope of parent function, and has access to global scope. <br>
+P.S. Lexical scope is not closure but an important part of closure. Here childFunction is closure to parentFunction. 
+```
+//global scope
+let x =10
+const parentFunction = () => {
+    //local scope
+    let y=100;
+    console.log(x,y)
+    const childFunction = () => {
+        x++ 
+        y++
+        console.log(x,y)
+    }
+    childFunction()
+}
+parentFunction()
+```
+# Closure
+A closure is a function having access to perent scope <b>EVEN AFTER THE PARENT FUNCTION HAS CLOSED.</b> A closure is created when you define a function, not when function is executed.
+```
+//global scope
+let x =10
+const parentFunction = () => {
+    //local scope
+    let y=100;
+    console.log(x,y)           //10 100
+    const childFunction = () => {
+        x++ 
+        y++
+        console.log(x,y)
+    }
+    return childFunction
+}
+let childFunc = parentFunction()
+childFunc()           //11 101
+childFunc()           //12 102
+childFunc()           //13 103
+```
 
 
 
