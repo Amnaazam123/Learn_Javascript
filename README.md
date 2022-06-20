@@ -317,3 +317,39 @@ function Person(firstName, lastName, age) {
 let person = new Person('Alex', 'Ferguson', 50);
 console.log(person.fullName());
 ```
+
+# Currying
+Currying takes a function that receives more than one parameter and breaks it into series of unary (one parameter) functions.
+```
+const buildSandwich = function(ingredient1){
+    return function(ingredient2){
+        return function(ingredient3){
+            console.log(ingredient1,ingredient2,ingredient3)
+        }
+    }
+}
+buildSandwich("a")("b")("c")
+
+//arrow notation
+const build = ingredient1=> ingredient2 => ingredient3 => console.log(ingredient1,ingredient2,ingredient3)
+build("a")("b")("c")
+```
+
+```
+const multiply = (x,y) => x*y           //one function takes two parameters
+const curriedMultiply = x => y => x*y   //two nested functions taking unary parameters
+
+console.log(curriedMultiply(2))         //[Function (anonymous)]
+console.log(curriedMultiply(2)(3))      //6  
+
+const func = curriedMultiply(2)        //[Function (anonymous)]
+console.log(func(3))                   //6
+```
+
+
+
+
+
+
+
+
