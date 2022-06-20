@@ -385,6 +385,26 @@ childFunc()           //11 101
 childFunc()           //12 102
 childFunc()           //13 103
 ```
+Immediately Invoked Function in closure:
+```
+//global scope
+let x =10
+const parentFunction = (() => {
+    //local scope
+    let y=100;
+    console.log(x,y)           //10 100
+    const childFunction = () => {
+        x++ 
+        y++
+        console.log(x,y)
+    }
+    return childFunction
+})()
+
+parentFunction()           //11 101
+parentFunction()           //12 102
+parentFunction()           //13 103
+```
 
 
 
