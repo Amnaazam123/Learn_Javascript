@@ -54,9 +54,9 @@ ES6 has some new features including :
 <b>Object entries</b>, 
 <b>JavaScript Modules</b>
 
-<h2 id="let">The let keyword</h2>
+<h2>The let keyword</h2>
 Let datatype has somehow same properties as C++ Datatypes.<br>
-Let declaration is block scoped, and can not be redeclared in same scope. 
+Let declaration is block scoped, and can not be redeclared in same scope. It can not be accessed before declaration.
 
 ```
 let x = 10;        // Here x is 10
@@ -75,8 +75,8 @@ Same properties as Let in javascript but its value cannot be reassigned.
   x = 345;                   //ERROR!!
   console.log(x)
 ```
-
 <h2>The Var keyword</h2>
+Var is global scoped and can be accessed before declaration.
 
 ```
 var x = 10;        // Here x is 10
@@ -405,6 +405,45 @@ parentFunction()           //11 101
 parentFunction()           //12 102
 parentFunction()           //13 103
 ```
+# Hoisting
+When javascript interpreter processes the script, it takes the function declarations, and variables declarations and moves them at the top of script, not physically but in memory.
+Let and const are not hoisted.
+```
+
+//-------------------------------------------------------Error!
+console.log(y)
+const y = 3            //It must be intialized when declared
+
+
+//---------------------------------------------------------Error!
+z = 5
+console.log(z)
+let z = 5
+
+//----------------------------------------------------------Okayy!
+x = 5
+console.log(x)
+var x
+
+//-------------------------------------------------------undefined!
+console.log(x)     //initializations are not hoisted
+var x = 5
+
+//-----------------------------------------------------------okayy!
+func()
+function func() {
+    console.log("Hello!")
+}
+
+//-----------------------------------------------------------Error!
+//arrow functions are somehow initializations
+func()
+var func = () => {
+    console.log("Hello!")
+}
+
+```
+
 
 
 
