@@ -531,7 +531,7 @@ function myFunction() {
 <button onclick="clearInterval(myVar)">Stop it</button>
 ```
 
-# 🤩🤩🤩🤩 WELCOME Here!! These are some Tasks asked by my Mentor 🤩🤩🤩🤩
+# 🤩🤩🤩🤩 Some Problems Asked by My Mentor 🤩🤩🤩🤩
 ### Problem - 1
 - Arrays are passed by reference.
 ```
