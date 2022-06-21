@@ -592,6 +592,30 @@ console.log(name)         //Amna
 console.log(age)          //20
 console.log(rest)         //{ city: 'okara', phone: 123456789, rollNo: 'BSEF19M009' }
 ```
+# 4 Ways to Copy Objects in JavaScript
+- Use the spread (...) syntax
+- Use the Object.assign() method
+- Use the JSON.stringify() and JSON.parse() methods
+- Direct Assignment
+Both spread (...) and Object.assign() perform a shallow copy while the JSON methods and direct Assignment(copy) carry a deep copy.A deep copying means that value of the new variable is disconnected from the original variable while a shallow copy(2 memories) means that some values are still connected to the original variable.
+
+```
+const person = {
+    firstName: 'Amna',
+    lastName: 'Azam'
+};
+
+
+// using spread ...
+let p1 = {...person};
+
+// using  Object.assign() method
+let p2 = Object.assign({}, person);
+
+// using JSON
+let p3 = JSON.parse(JSON.stringify(person));
+
+```
 
 # 🤩🤩🤩🤩 Some Problems Asked by My Mentor 🤩🤩🤩🤩
 ### Problem - 1
