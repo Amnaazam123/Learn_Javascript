@@ -749,6 +749,49 @@ promise.then(
 - The first argument of .then is a function that runs when the promise is resolved, and receives the result.
 - The second argument of .then is a function that runs when the promise is rejected, and receives the error.
 
+# Error Handling
+- The try statement defines a code block to run 
+- The catch statement defines a code block to handle any error.(JavaScript will actually create an Error object with two properties: name and message.)
+- The finally statement defines a code block to run regardless of the result.
+- The throw statement defines a custom error which is used in try block.
+- try alone cannot be used. you must use catch or hinally with it.
+### try-catch
+```
+try {
+    lert("Welcome guest!");                       //typo mistake, *alert
+  }
+catch(error) {
+    console.log("There is an error!!", error.message)           //There is an error!! lert is not defined
+}
+```
+### throw
+```
+try{
+    let x=5
+    if(x==5){throw "wrong value"}
+}
+catch(error){
+    console.log(error)          //wrong value
+}
+```
+### finally
+```
+try{
+    let x=5
+    if(x==5)
+    {
+       throw "wrong value"
+    }
+}
+catch(error){
+    console.log(error)          //wrong value
+}
+finally{
+    console.log("I do not care")     //I do not care
+    }
+```
+
+
 
 # 🤩🤩🤩🤩 Some Problems Asked by My Mentor 🤩🤩🤩🤩
 ### Problem - 1
