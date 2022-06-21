@@ -1,5 +1,7 @@
 # Learn Javascript
 ### Data Types:
+Primitives - pass by value - (string, number, null, boolean, undefined, symbol)
+Non-Primitives pass by reference - (functions, arrays and objects)
 ```
 let length = 16;                               // Number
 let num = 16.32                                // Number
@@ -126,8 +128,19 @@ var average = (a,b)=>{
 }
 console.log(sum3(1,5))
 ```
-Note : A regular function declaration defines a function that will be executed when it is invoked. A function expression is similar to a function declaration, with the difference that it can be stored in a variable. As soon as the function is defined with an expression, it is invoked.Lter on it is just used.
-
+Note : A regular function declaration defines a function that will be executed when it is invoked. A function expression is similar to a function declaration, with the difference that it can be stored in a variable. As soon as the function is defined with an expression, it is invoked. Later on it is just used.
+### Name Function Expression (NFE)
+```
+var boo = function boo () {
+  alert(1);
+};
+```
+### Anonymous Function Expression (AFE)
+```
+var boo = function () {
+  alert(1);
+};
+```
 <h2>Arithmetic operators</h2>
 +, -, *, /, **, %, ++, --
 
@@ -206,6 +219,7 @@ do{
 ```
 
 # Objects
+Almost everything in JavaScript is an object. In fact, only six things are not objects. They are — null , undefined , strings, numbers, boolean, and symbols.
 ```
 let Person = {
     firstName:"Amna",
@@ -596,7 +610,7 @@ console.log(rest)         //{ city: 'okara', phone: 123456789, rollNo: 'BSEF19M0
 - Use the spread (...) syntax
 - Use the Object.assign() method
 - Use the JSON.stringify() and JSON.parse() methods
-- Direct Assignment
+- Direct Assignment<br>
 Both spread (...) and Object.assign() perform a shallow copy while the JSON methods and direct Assignment(copy) carry a deep copy.A deep copying means that value of the new variable is disconnected from the original variable while a shallow copy(2 memories) means that some values are still connected to the original variable.
 
 ```
@@ -616,6 +630,125 @@ let p2 = Object.assign({}, person);
 let p3 = JSON.parse(JSON.stringify(person));
 
 ```
+
+# Function Objects
+Functions are objects.
+- Lets assign property to function just like objects.
+```
+// Function declaration.
+function showFavoriteIceCream() {
+  const favIceCream = 'chocolate';
+  console.log(`My favorite ice cream is ${favIceCream}`);
+}
+
+// Let's assign a property.
+showFavoriteIceCream.flavours = ['chocolate', 'vanilla', 'strawberry'];
+console.log(showFavoriteIceCream);          // { [Function: showFavoriteIceCream] flavours: [ 'chocolate', 'vanilla', 'strawberry' ] }
+```
+- Let's assign a function to function just like objects.
+```
+// Function declaration.
+function showFavoriteIceCream() {
+  const favIceCream = 'chocolate';
+  console.log(`My favorite ice cream is ${favIceCream}`);
+}
+
+// Let's assign a property.
+showFavoriteIceCream.flavours = ['chocolate', 'vanilla', 'strawberry'];
+
+// Let's assign a function.
+showFavoriteIceCream.showFlavours = function () {
+  return this.flavours;
+};
+
+console.log(showFavoriteIceCream);           //{ [Function: showFavoriteIceCream] flavours: [ 'chocolate', 'vanilla', 'strawberry' ], showFlavours: [Function] }
+```
+# Prototype
+JavaScript is a dynamic language. You can attach new properties to an object at any time as shown below.
+```
+function Student() {
+    this.name = 'John';
+    this.gender = 'Male';
+}
+
+var studObj1 = new Student();
+studObj1.age = 15;
+alert(studObj1.age); // 15
+
+var studObj2 = new Student();
+alert(studObj2.age); // undefined
+```
+As you can see in the above example, age property is attached to studObj1 instance. However, studObj2 instance will not have age property because it is defined only on studObj1 instance.<br>
+So what to do if we want to add new properties at later stage to a function which will be shared across all the instances?<br>
+The prototype is an object that is associated with every functions and objects by default in JavaScript, where function's prototype property is accessible and modifiable and object's prototype property (aka attribute) is not visible.
+```
+//constructor function
+function Student() {
+    this.name = 'John';
+    this.gender = 'M';
+}
+//adding attribute to constructor method 
+Student.prototype.age = 15;
+// adding a method to the constructor function
+Student.prototype.greet = function() {
+    console.log('hello' + ' ' +  this.name);
+}
+
+var studObj1 = new Student();
+console.log(studObj1.age);    // 15
+
+var studObj2 = new Student();
+console.log(studObj2.age);  // 15
+
+studObj1.age = 20
+console.log(studObj1.age);     // 20
+console.log(studObj2.age);     // 15
+
+
+Student.prototype.age = 20;
+
+console.log(studObj1.age); // 20
+console.log(studObj2.age); // 25
+
+console.log(Student.prototype)      //{ age: 20, greet: [Function (anonymous)] }
+```
+
+# Promise
+"Producing code" is code that can take some time<br>
+"Consuming code" is code that must wait for the result<br>
+A Promise is a JavaScript object that links producing code and consuming code<br>
+The function passed to new Promise is called the executor. <br>
+The promise object returned by the new Promise constructor has 2 internal properties:
+- state — initially "pending", then changes to either "fulfilled" when resolve is called or "rejected" when reject is called.
+- result — initially undefined, then changes to value when resolve(value) called or error when reject(error) is called.
+```
+let promise = new Promise(function(resolve, reject) {
+  // the function is executed automatically when the promise is constructed
+
+  // after 1 second signal that the job is done with the result "done"
+  setTimeout(() => resolve("done"), 1000);
+});
+```
+We can see two things by running the code above:
+- The executor is called automatically and immediately (by new Promise).
+- The executor receives two arguments: resolve and reject. These functions are pre-defined by the JavaScript engine, so we don’t need to create them. We should only call one of them when ready.
+- After one second of “processing” the executor calls resolve("done") to produce the result. This changes the state of the promise object from pending to fulfilled.
+```
+let promise = new Promise(function(resolve, reject) {
+  // after 1 second signal that the job is finished with an error
+  setTimeout(() => reject(new Error("Whoops!")), 1000);
+});
+```
+A Promise object serves as a link between the executor (the “producing code” or “singer”) and the consuming functions (the “fans”), which will receive the result or error.
+```
+promise.then(
+  function(result) { /* handle a successful result */ },
+  function(error) { /* handle an error */ }
+);
+```
+- The first argument of .then is a function that runs when the promise is resolved, and receives the result.
+- The second argument of .then is a function that runs when the promise is rejected, and receives the error.
+
 
 # 🤩🤩🤩🤩 Some Problems Asked by My Mentor 🤩🤩🤩🤩
 ### Problem - 1
