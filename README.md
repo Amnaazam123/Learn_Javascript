@@ -204,7 +204,7 @@ let Person = {
     firstName:"Amna",
     lastName:"Azam",
     fullName:function(){
-        console.log(this.firstName+" "+this.lastName)
+        console.log(this.firstName + " " + this.lastName)
     }
 }
 
@@ -443,9 +443,148 @@ var func = () => {
 }
 
 ```
+# Null and Undefined
+undefined is a type, whereas null an object.
+```
+var demo;
+alert(demo); //shows undefined
+alert(typeof demo); //shows undefined
+```
+```
+var demo = null;
+alert(demo); //shows null
+alert(typeof demo); //shows object
+```
+# Event Bubling and Event Capturing
+Event Bubbling(current to outer) − Whenever an event happens on an element, the event handlers will first run on it and then on its parent and finally on the last parent. Event Capturing(current to inner) − It is the reverse of the event bubbling and here the event starts from the parent element and then to its child element.
+- true - Capturing
+- false - Bubbling (by default)
+```
+<html>
+  <head></head>
+  <body>
+    <article id="ancestor" >
+      article element
+      <div id="parent" >
+        div element
+        <p id="child" >
+          p element
+        </p>
+      </div>
+    </article>
+  </body>
+</html>
 
+<script>
+  // Script to click event handler to capture on each element
+  for(let elem of document.querySelectorAll('*')) {
+    elem.addEventListener("click", e => console.log("Capturing:", elem.tagName), true);
+  }
+</script>
+```
+# why obj1 === obj2 returns False
+when you say a==b or a===b, you're not comparing the objects, you're comparing the references in a and b to see if they refer to the same object. It return False when you have 2 distincts objects in memory.
+```
+let ob1={a:"b"}
+let ob2={a:"b"}
 
+console.log(ob1==ob2)       //false
+console.log(ob1===ob2)      //false
 
+let ob3 = ob2
+console.log(ob2==ob3)       //true
+console.log(ob2===ob3)      //true
+```
+# why var1 === var2 returns False
+It returns false when you have different datatypes. Even if you have different values but same datatype, "===" must return false even with same data type.
+```
+let a=10
+let b="10"
+
+console.log(a===b)   //false
+console.log(a==b)    //true
+
+let c="11"
+let d="10"
+
+console.log(c===d)   //false
+console.log(c==d)    //false
+
+```
+# Javascript Timing Events
+ - setTimeout()
+setTimeout(function, milliseconds) - Executes a function, after waiting a specified number of milliseconds.
+```
+function myFunction() {
+    alert('Hello');
+  }
+<button onclick="myVar = setTimeout(myFunction, 3000)">Try it</button>
+<button onclick="clearTimeout(myVar)">Stop it before 3s</button>
+```
+ - setInterval()
+setInterval(function, milliseconds) - Same as setTimeout(), but repeats the execution of the function continuously.
+```
+function myFunction() {
+    alert('Hello');
+  }
+<button onclick="myVar = setInterval(myFunction, 3000)">Try it</button>
+<button onclick="clearInterval(myVar)">Stop it</button>
+```
+
+# 🤩🤩🤩🤩 WELCOME Here!! These are some Tasks asked by my Mentor 🤩🤩🤩🤩
+### Problem - 1
+- Arrays are passed by reference.
+```
+var arr1 = "john".split('')     //['j','o','h','n']
+var arr2 = arr1.reverse()       //['n','h','o','j'] - reverse of arr1 is copied by reference in arr2
+
+var arr3 = "jones".split('')     //['j','o','n','e','s']
+                
+arr2.push(arr3)                  //['n','h','o','j',['j','o','n','e','s']]
+
+console.log(arr1.length())       //5
+console.log(arr1.slice(-1))      //j,o,n,e,s
+
+console.log(arr2.length())       //5
+console.log(arr2.slice(-1))      //j,o,n,e,s
+```
+
+### Problem - 2
+- When Function returns object.
+```
+function foo1(){
+    return {
+        bar:"hello"
+    };
+}
+function foo2(){
+    return {
+        bar:"hello"
+    };
+}
+console.log(foo1().bar)      //hello
+console.log(foo2().bar)      //hello
+```
+
+### Problem - 3
+- Immediately invoked function and currying
+```
+let func = ((x)=>{
+    return((y)=>{
+        console.log(x)     //2
+    })(1)
+})(2)
+```
+### Problem - 4
+- Partially invoked Currying
+```
+var answer = 0
+const baseValue = value => multipleValue => value * multipleValue
+
+const multiple = baseValue(2);
+answer = multiple(5)
+console.log(answer)          //10
+```
 
 
 
