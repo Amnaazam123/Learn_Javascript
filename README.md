@@ -537,61 +537,6 @@ function myFunction() {
 <button onclick="myVar = setInterval(myFunction, 3000)">Try it</button>
 <button onclick="clearInterval(myVar)">Stop it</button>
 ```
-
-# 🤩🤩🤩🤩 Some Problems Asked by My Mentor 🤩🤩🤩🤩
-### Problem - 1
-- Arrays are passed by reference.
-```
-var arr1 = "john".split('')     //['j','o','h','n']
-var arr2 = arr1.reverse()       //['n','h','o','j'] - reverse of arr1 is copied by reference in arr2
-
-var arr3 = "jones".split('')     //['j','o','n','e','s']
-                
-arr2.push(arr3)                  //['n','h','o','j',['j','o','n','e','s']]
-
-console.log(arr1.length())       //5
-console.log(arr1.slice(-1))      //j,o,n,e,s
-
-console.log(arr2.length())       //5
-console.log(arr2.slice(-1))      //j,o,n,e,s
-```
-
-### Problem - 2
-- When Function returns object.
-```
-function foo1(){
-    return {
-        bar:"hello"
-    };
-}
-function foo2(){
-    return {
-        bar:"hello"
-    };
-}
-console.log(foo1().bar)      //hello
-console.log(foo2().bar)      //hello
-```
-
-### Problem - 3
-- Immediately invoked function and currying
-```
-let func = ((x)=>{
-    return((y)=>{
-        console.log(x)     //2
-    })(1)
-})(2)
-```
-### Problem - 4
-- Partially invoked Currying
-```
-var answer = 0
-const baseValue = value => multipleValue => value * multipleValue
-
-const multiple = baseValue(2);
-answer = multiple(5)
-console.log(answer)          //10
-```
 # Destructuring of arrays
 Before E6
 ```
@@ -646,6 +591,61 @@ let {name,age,...rest} = User
 console.log(name)         //Amna
 console.log(age)          //20
 console.log(rest)         //{ city: 'okara', phone: 123456789, rollNo: 'BSEF19M009' }
+```
+
+# 🤩🤩🤩🤩 Some Problems Asked by My Mentor 🤩🤩🤩🤩
+### Problem - 1
+- Arrays are passed by reference.
+```
+var arr1 = "john".split('')     //['j','o','h','n']
+var arr2 = arr1.reverse()       //['n','h','o','j'] - reverse of arr1 is copied by reference in arr2
+
+var arr3 = "jones".split('')     //['j','o','n','e','s']
+                
+arr2.push(arr3)                  //['n','h','o','j',['j','o','n','e','s']]
+
+console.log(arr1.length())       //5
+console.log(arr1.slice(-1))      //j,o,n,e,s
+
+console.log(arr2.length())       //5
+console.log(arr2.slice(-1))      //j,o,n,e,s
+```
+
+### Problem - 2
+- When Function returns object.
+```
+function foo1(){
+    return {
+        bar:"hello"
+    };
+}
+function foo2(){
+    return {
+        bar:"hello"
+    };
+}
+console.log(foo1().bar)      //hello
+console.log(foo2().bar)      //hello
+```
+
+### Problem - 3
+- Immediately invoked function and currying
+```
+let func = ((x)=>{
+    return((y)=>{
+        console.log(x)     //2
+    })(1)
+})(2)
+```
+### Problem - 4
+- Partially invoked Currying
+```
+var answer = 0
+const baseValue = value => multipleValue => value * multipleValue
+
+const multiple = baseValue(2);
+answer = multiple(5)
+console.log(answer)          //10
 ```
 
 
