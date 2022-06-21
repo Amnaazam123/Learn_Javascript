@@ -4,7 +4,14 @@
 let length = 16;                               // Number
 let num = 16.32                                // Number
 let lastName = "Azam";                         // String
-const cars = ["Saab", "Volvo", "BMW"];         // Arrays
+//Method 1
+const cars = ["Saab", "Volvo", "BMW"];         // Arrays =>delete[1]=>[1]=undefinded
+// Method 2
+const secondArray = new Array(3);
+secondArray[0] = "JavaScript";
+secondArray[1] = "Python";
+secondArray[2] = "Go";
+
 let car;                                       // undefined
 let x = {                                      // Object
           firstName:"Amna",
@@ -585,9 +592,61 @@ const multiple = baseValue(2);
 answer = multiple(5)
 console.log(answer)          //10
 ```
+# Destructuring of arrays
+Before E6
+```
+let User = ["Amna",20]
+let name = User[0]
+let age = User[1]
+```
+After E6, There is destructuring of arrays
+```
+let [name,age] = User
+console.log(name)        //Amna
+console.log(age)         //20
+
+//if you only want to get age
+let [,age] = User        //name=undefined,age=20
+
+let myArr = ["Amna",20,"Okara","Arshia","Arooj"]
+let [name,age,...rest] = myArr
+console.log(name)         //Amna
+console.log(age)          //20
+console.log(rest)         //["Okara","Arshia","Arooj"]
+```
+
+# Destructuring of objects
+Before E6
+```
+let User = {
+    name:"Amna",
+    age:20,
+    city:"okara",
+    phone:123456789,
+    rollNo:"BSEF19M009"
+}
+
+let name = User["name"]
+let age = User["age"]
+let city = User["city"]
+```
+After E6, There is destructuring of objects
+```
+//These names must match with dictionary keys otherwise undefined.
+let {name,age,city} = User
+console.log(name,age,city)        //Amna 20 okara
 
 
+//if you only want to get age and city
+let {age,city} = User        //or let {age:A,city:C} = User; console.log(A,C)  
+console.log(age,city)        //20 okara
 
+
+let {name,age,...rest} = User
+console.log(name)         //Amna
+console.log(age)          //20
+console.log(rest)         //{ city: 'okara', phone: 123456789, rollNo: 'BSEF19M009' }
+```
 
 
 
