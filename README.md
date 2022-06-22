@@ -1,5 +1,5 @@
 # Learn Javascript
-### Data Types:
+### Data Types :
 Primitives - pass by value - (string, number, null, boolean, undefined, symbol)
 Non-Primitives pass by reference - (functions, arrays and objects)
 ```
