@@ -1032,9 +1032,7 @@ alert( document.body.previousSibling ); // HTMLHeadElement
   td.style.backgroundColor = "red"; // highlight it
 </script>
 ```
-```
 ![image](https://user-images.githubusercontent.com/71166016/175239886-85ceb2bd-b062-415e-a23c-18cfd9d193fe.png)
-```
 
 # 🤩🤩🤩🤩 Some Problems 🤩🤩🤩🤩
 ### Problem - 1
