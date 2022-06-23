@@ -1080,11 +1080,55 @@ Module bundlers are the way to organize and combine many files of JavaScript cod
 ### Webpack
 Webpack is a free and open-source module bundler for JavaScript. It is made primarily for JavaScript, but it can transform front-end assets such as HTML, CSS, and images if the corresponding loaders are included.
 
-# Debouncing in javascript
-Debouncing in JavaScript is a practice used to improve browser performance. There might be some functionality in a web page which requires time-consuming computations. If such a method is invoked frequently, it might greatly affect the performance of the browser, as JavaScript is a single threaded language. Debouncing is a programming practice used to ensure that time-consuming tasks do not fire so often, that it stalls the performance of the web page. In other words, it limits the rate at which a function gets invoked.
+# Debouncing and throttling in javascript
+![image](https://user-images.githubusercontent.com/71166016/175355126-63b758fd-8206-48a2-875f-e55effc3f488.png)
 
-# Throttling in javascript
-Throttling or sometimes is also called throttle function is a practice used in websites. Throttling is used to call a function after every millisecond or a particular interval of time only the first click is executed immediately. You click on 1 button, after let suppose 5sec it will feel second click.
+- Throttle: the original function will be called at most once per specified period.
+- Debounce: the original function will be called after the caller stops calling the decorated function after a specified period.
+### Debounce : 
+```
+<body>
+    <button id="clickk">Click me</button>
+    <script>
+        let debounce = function(fn,delay){
+            let id;
+        return function(...args){
+            if(id) clearTimeout(id)
+            id=setTimeout(fn,delay)
+        }
+        }
+        btn = document.getElementById("clickk")
+        btn.addEventListener("click",debounce(()=>console.log("Ho gya click meri behn"),2000));
+
+    
+    </script>
+</body>
+```
+### Throttling
+```
+<body>
+    <button id="clickk">Click me</button>
+    <script>
+        let throttle = function(fn,delay){
+            let last = 0
+           return function(...args){
+                let now = new Date().getTime();
+                if(now-last < delay)
+                    return;
+                last=now
+                fn()
+
+           }
+        }
+        btn = document.getElementById("clickk")
+        btn.addEventListener("click",throttle(()=>console.log("Ho gya click meri behn"),2000));
+
+    
+    </script>
+</body>
+```
+
+
 
 # 🤩🤩🤩🤩 Some Problems 🤩🤩🤩🤩
 ### Problem - 1
