@@ -1073,6 +1073,18 @@ arr.forEach(num => {
 });
 
 ```
+# Transpiler (Babel)
+Babel is a JavaScript compiler. A transpiler is a compiler-like program, which converts ES6 JavaScript code to ES5 JavaScript code so that it can run in browsers. When the transpiler sees an expression that uses a language feature that needs to be translated, it produces a logically equivalent expression.
+# Module Bundler
+Module bundlers are the way to organize and combine many files of JavaScript code into one file. A JavaScript bundler can be used when your project becomes too large for a single file or when you're working with libraries that have multiple dependencies.
+### Webpack
+Webpack is a free and open-source module bundler for JavaScript. It is made primarily for JavaScript, but it can transform front-end assets such as HTML, CSS, and images if the corresponding loaders are included.
+
+# Debouncing in javascript
+Debouncing in JavaScript is a practice used to improve browser performance. There might be some functionality in a web page which requires time-consuming computations. If such a method is invoked frequently, it might greatly affect the performance of the browser, as JavaScript is a single threaded language. Debouncing is a programming practice used to ensure that time-consuming tasks do not fire so often, that it stalls the performance of the web page. In other words, it limits the rate at which a function gets invoked.
+
+# Throttling in javascript
+Throttling or sometimes is also called throttle function is a practice used in websites. Throttling is used to call a function after every millisecond or a particular interval of time only the first click is executed immediately. You click on 1 button, after let suppose 5sec it will feel second click.
 
 # 🤩🤩🤩🤩 Some Problems 🤩🤩🤩🤩
 ### Problem - 1
