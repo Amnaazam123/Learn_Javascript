@@ -790,10 +790,164 @@ finally{
     console.log("I do not care")     //I do not care
     }
 ```
+# Pure Function
+A Pure Function is a function (a block of code) that always returns the same result if the same arguments are passed. Rather, it only depends on its input arguments.
+- Pure function example:
+```
+function calculateGST( productPrice ) {
+    return productPrice * 0.05;
+}
+```
+- Not Pure Function Example 
+```
+var tax = 20;
+function calculateGST( productPrice ) {
+    return productPrice * (tax / 100) + productPrice;
+}
+```
+# Geberators
+A generator can pause midway and then continues from where it paused. The asterisk denotes that the generate() is a generator, not a normal function. The yield statement returns a value and pauses the execution of the function. A generator returns a Generator object without executing its body when it is invoked. It has two properties : value and done.  It has next() method to resume the function execution.
+```
+function * myGenerator(){
+  yield 1
+  yield 2
+  yield 3
+}
+
+console.log(myGenerator())      //Object [Generator] {}
+let g = myGenerator()           
+console.log(g.next())           //{ value: 1, done: false } 
+let g2 = g.next()   
+console.log(g2)                 // { value: 2, done: false }             
+console.log(g2.value)           // 2
+console.log(g.next())           //{ value: 3, done: false } 
+console.log(g.next())           //{ value: undefined, done: true } 
+
+//ID GENERATOR
+function * myGenerator(){
+  let id=1
+  while(true){
+    yield id
+    id++
+  }
+}
+
+console.log(myGenerator())      //Object [Generator] {}
+let g = myGenerator()           
+console.log(g.next())           //{ value: 1, done: false } 
+console.log(g.next())           //{ value: 2, done: false } 
+console.log(g.next())           //{ value: 3, done: false } 
+console.log(g.next())           //{ value: 4, done: false } 
+
+
+```
+# Js Modules
+JavaScript modules allow you to break up your code into separate files.
+This makes it easier to maintain the code-base.
+JavaScript modules rely on the import and export statements.
+### Export
+Let us create a file named message.js, and fill it with the things we want to export in other file. There are two ways to export<br>
+Default and Named Export: You can only have one default export in a file.
+```
+const message = () => {
+
+};
+const message1 = () => {
+
+};
+const message2 = () => {
+  
+};
+export default message;
+export {message1,message2}
+
+//-------------------------------------- OR
+//default export
+export default function message(){
+
+};
+
+//named export
+export const message1 = () => {
+
+};
+export const message2 = () => {
+
+};
+  
+```
+### import
+You can import modules into a file in two ways, based on if they are named exports or default exports.<br>
+```
+//named import
+import { message1 as msg, message2 } from "./message.js";
+console.log(msg())
+console.log(message2())
+
+//default import
+import message from "./message.js";
+```
+# Function chaining
+### Before chaining
+```
+var makeObj = function(){
+  this.i = 0;
+
+  this.increment = function(){
+    this.i = this.i + 5
+  }
+
+  this.decrement = function (){
+    this.i = this.i - 1
+  }
+
+  this.print = function (){
+    console.log(this.i)
+  }
+}
+var obj = new makeObj()
+obj.increment()
+obj.decrement()
+obj.print()          //4
+```
+### After method chaining
+```
+var makeObj = function(){
+  this.i = 0;
+
+  this.increment = function(){
+    this.i = this.i + 5
+    return this
+  }
+
+  this.decrement = function (){
+    this.i = this.i - 1
+    return this
+  }
+
+  this.print = function (){
+    console.log(this.i)
+  }
+}
+var obj = new makeObj()
+obj.increment().decrement().print()           //4
+```
+# Concurrency Model and Event Loop
+The event loop simply checks the call stack, and if it is empty (which means there are no functions in the stack) it takes the oldest callback from the callback queue and pushes it into the call stack which eventually executes the callback.
+```
+console.log('hi');
+
+setTimeout(function() {
+     console.log('Amna')
+},5000);
+
+console.log('JS')
+```
+Message hi is pushed in stack, exectued and then poped. setTimeout is web API, This function is given to browser to excute. During this 5s period, Message JS is pushed in stack, exectued and then poped. After 5s, Browser pushes this function to callback queue. Here event loop check if stack is empty, then this function from queue is pushed to stack. Message "Amna" is pushed to stack, executed and poped. Finally this function poped from stack and program ends.
 
 
 
-# 🤩🤩🤩🤩 Some Problems Asked by My Mentor 🤩🤩🤩🤩
+# 🤩🤩🤩🤩 Some Problems 🤩🤩🤩🤩
 ### Problem - 1
 - Arrays are passed by reference.
 ```
