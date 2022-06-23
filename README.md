@@ -1034,6 +1034,46 @@ alert( document.body.previousSibling ); // HTMLHeadElement
 ```
 ![image](https://user-images.githubusercontent.com/71166016/175239886-85ceb2bd-b062-415e-a23c-18cfd9d193fe.png)
 
+# Polyfill in javascript
+A polyfill is a piece of code (usually JavaScript on the Web) used to provide modern functionality on older browsers that do not natively support it. Some browser like Internet explorer do not support Arrow Functions. One solution is that you make polyfill of arrow function.
+```
+//There is no error if your browser is compatible with foreach function.
+let arr =['1','2','3']
+arr.forEach(num => {
+  console.log(num);
+});
+```
+```
+let arr =['1','2','3']
+
+//make your browser incompatible with foreach function
+Array.prototype.forEach=null
+
+arr.forEach(num => {          //TypeError: arr.forEach is not a function
+  console.log(num);
+});
+
+```
+```
+//solution
+let arr =['1','2','3']
+
+//make your browser incompatible with foreach function
+Array.prototype.forEach=null
+
+if(Array.prototype.forEach == null){
+  //polyfill
+  Array.prototype.forEach=function(){
+    //define foreach function by yourself for incompatible browser.
+  }
+
+}
+arr.forEach(num => {        
+  console.log(num);
+});
+
+```
+
 # 🤩🤩🤩🤩 Some Problems 🤩🤩🤩🤩
 ### Problem - 1
 - Arrays are passed by reference.
