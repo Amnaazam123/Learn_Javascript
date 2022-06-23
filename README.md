@@ -943,9 +943,98 @@ setTimeout(function() {
 
 console.log('JS')
 ```
+### Code Explaination:
 Message hi is pushed in stack, exectued and then poped. setTimeout is web API, This function is given to browser to excute. During this 5s period, Message JS is pushed in stack, exectued and then poped. After 5s, Browser pushes this function to callback queue. Here event loop check if stack is empty, then this function from queue is pushed to stack. Message "Amna" is pushed to stack, executed and poped. Finally this function poped from stack and program ends.
 
+# walking in DOM 
+```
+<html>
 
+<head>
+  <script>
+    alert( "From HEAD: " + document.body ); // null, there's no <body> yet
+  </script>
+</head>
+
+<body>
+
+  <script>
+    alert( "From BODY: " + document.body ); // HTMLBodyElement, now it exists
+  </script>
+
+</body>
+</html>
+```
+```
+<html>
+<body>
+  <div>Begin</div>
+
+  <ul>
+    <li>Information</li>
+  </ul>
+
+  <div>End</div>
+
+  <script>
+    for (let i = 0; i < document.body.childNodes.length; i++) {
+      alert( document.body.childNodes[i] ); // Text, DIV, Text, UL, Text, DIV, Text, SCRIPT
+    }
+  </script>
+  ...more stuff...
+</body>
+</html>
+```
+```
+<html>
+<body>
+  <div>Begin</div>
+
+  <ul>
+    <li>Information</li>
+  </ul>
+
+  <div>End</div>
+
+  <script>
+    for (let elem of document.body.children) {
+      alert(elem); // DIV, UL, DIV, SCRIPT
+    }
+  </script>
+  ...
+</body>
+</html>
+```
+
+```
+// parent of <body> is <html>
+alert( document.body.parentNode === document.documentElement ); // true
+
+// after <head> goes <body>
+alert( document.head.nextSibling ); // HTMLBodyElement
+
+// before <body> goes <head>
+alert( document.body.previousSibling ); // HTMLHeadElement
+```
+```
+<table id="table">
+  <tr>
+    <td>one</td><td>two</td>
+  </tr>
+  <tr>
+    <td>three</td><td>four</td>
+  </tr>
+</table>
+
+<script>
+  // get td from first row, second column.
+  let td = table.rows[0].cells[1];
+  td.style.backgroundColor = "red"; // highlight it
+</script>
+```
+```
+![image](https://user-images.githubusercontent.com/71166016/175239886-85ceb2bd-b062-415e-a23c-18cfd9d193fe.png)
+```
 
 # 🤩🤩🤩🤩 Some Problems 🤩🤩🤩🤩
 ### Problem - 1
