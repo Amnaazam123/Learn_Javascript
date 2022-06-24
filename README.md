@@ -1127,6 +1127,12 @@ Webpack is a free and open-source module bundler for JavaScript. It is made prim
     </script>
 </body>
 ```
+# UI Events
+- Mouse Events             
+- Pointer Events   
+- keyboard Events           
+- scrolling Events
+
 
 
 
@@ -1179,11 +1185,9 @@ let func = ((x)=>{
 ```
 var answer = 0
 const baseValue = value => multipleValue => value * multipleValue
-
 const multiple = baseValue(2);
 answer = multiple(5)
 console.log(answer)          //10
 ```
-
 
 
