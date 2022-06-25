@@ -1127,11 +1127,41 @@ Webpack is a free and open-source module bundler for JavaScript. It is made prim
     </script>
 </body>
 ```
-# UI Events
-- Mouse Events             
-- Pointer Events   
-- keyboard Events           
-- scrolling Events
+# UI Events in javascript
+- Click, double click, right click           
+- Mouse hover, mouse out, mouse down, mouse up 
+- key press, key up        
+- Load, unload
+- Resize
+- Scroll
+![image](https://user-images.githubusercontent.com/71166016/175782862-3a9dd5f9-a15e-4cb3-95c6-ae4584486e9c.png)
+```
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function hello(){
+        alert("hello")
+    }
+</script>
+<!--keypress event works only for body or form tags-->
+<body  onkeypress="hello()">             <!--<body  onresize="hello()">  -->
+    <button onclick="hello()">Click me</button>
+    <button ondblclick="hello()">Click me for double click</button>
+    <button oncontextmenu="hello()">Click me for right click</button>
+    <button onmouseenter="hello()">Hover me</button>
+    <button onmouseout="hello()">UnHover me</button>
+    <button onmousedown="hello()">Click me</button>
+    <button onmouseup="hello()">Leave your Click</button>
+    <button>Click me for single click</button>  
+    <div  onscroll="hello()">I am div with scroll bar</div>
+</body>
+</html>
+```
 
 
 
