@@ -1194,9 +1194,17 @@ Webpack is a free and open-source module bundler for JavaScript. It is made prim
 </body>
 </html>
 ```
+# Network request
+A network request is an HTTP request from your mobile app to a server-side application. 
+Network requests are used to retrieve or modify API data or media from a server. This is a very common task in Android development especially for dynamic data-driven clients.
 
+# Binary Files
+A binary file is a file whose content is in a binary format consisting of a series of sequential bytes, each of which is eight bits in length.
 
-
+# 3 ways to store data by browser
+- Cookies
+- Session storage
+- Local storage
 # 🤩🤩🤩🤩 Some Problems 🤩🤩🤩🤩
 ### Problem - 1
 - Arrays are passed by reference.
