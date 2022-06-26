@@ -1162,7 +1162,38 @@ Webpack is a free and open-source module bundler for JavaScript. It is made prim
 </body>
 </html>
 ```
+#popup window in javascript
+```
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            background-color: red;
+            width: 50%;
+            height: 50%;
+            transform: scale(0);
+        }
 
+        
+    </style>
+
+</head>
+<body>
+    <button id="b">Pop new window</button>
+    <div class="div1 active" id="newWindow"></div>
+    <script>
+        const btn = document.getElementById("b")
+        btn.addEventListener("click",()=>{
+            window.open("https://www.google.com",",","width=500px,height=500px")
+        })
+    </script>
+</body>
+</html>
+```
 
 
 
